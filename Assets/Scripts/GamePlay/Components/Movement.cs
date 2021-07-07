@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using GamePlay.Model;
+using GamePlay.Data;
 using UnityEngine;
 
 namespace GamePlay.Component

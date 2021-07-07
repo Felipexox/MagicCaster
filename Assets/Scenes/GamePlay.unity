@@ -425,6 +425,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Characters:
   - {fileID: 1687623425486741313, guid: 749f9138ea877be40a816582758e1870, type: 3}
+  _spellReference:
+    m_AssetGUID: 7f11fc84c11c7594ab9e98a465959b21
+    m_SubObjectName: 
+    m_SubObjectType: 
 --- !u!4 &1479036588
 Transform:
   m_ObjectHideFlags: 0
