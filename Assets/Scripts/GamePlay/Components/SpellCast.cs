@@ -12,12 +12,14 @@ namespace GamePlay.Component
 {
     public class SpellCast : MonoBehaviour
     {
+        private TargetResolver _targetResolver;
+        
         private SpellCastInput _input;
         private SpellDataBase _spellDataBase;
-
         private NativeArray<SpellCooldown> _spellCooldown;
-        public void Initialize(SpellDataBase spellDataBase)
+        public void Initialize(SpellDataBase spellDataBase, TargetResolver targetResolver)
         {
+            _targetResolver = targetResolver;
             _spellDataBase = spellDataBase;
             _spellCooldown = new NativeArray<SpellCooldown>(_spellDataBase.Spells.Length, Allocator.Persistent);
         }
@@ -43,7 +45,7 @@ namespace GamePlay.Component
         {
             var ability = database.FindAbility(id);
             
-            var visualInfoGuidStr = VisualInfoUtility.FormatAddressableGuid(ability.VisualInfoGuid);
+            var visualInfoGuidStr = VisualInfoUtility.FormatAddressableGuid(ability.AssetReferenceGuid);
             
             var visualInfoAssetReference = new AssetReference(visualInfoGuidStr);
 
@@ -51,7 +53,9 @@ namespace GamePlay.Component
 
             var asset = visualInfoAssetReference.Asset as GameObject;
 
-            Instantiate(asset);
+            var abilityInfo = Instantiate(asset.GetComponent<AbilityInfo.AbilityInfo>());
+            
+            abilityInfo.Initialize(ability, _targetResolver);
         }
 
         private void TickSpellCast(Guid spellGuid, bool inputCastKey)

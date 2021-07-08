@@ -1,7 +1,7 @@
 using System;
 
-namespace GamePlay.Data
-{
+    namespace GamePlay.Data
+    {
     public struct Spell
     {
         public Guid SpellGuid;
@@ -10,10 +10,28 @@ namespace GamePlay.Data
         public float Cooldown;
     }
 
+    public enum AbilityTarget
+    {
+        NoTarget,
+        ClosestCharacterLookingFor,
+        AllPlayer,
+        MouseDirection,
+        Caster
+    }
+
     public struct Ability
     {
         public Guid AbilityGuid;
-        public Guid VisualInfoGuid;
+        
+        public Guid AssetReferenceGuid;
+        
+        public AbilityTarget Target;
+
+        public float Duration;
+        public bool  DestroyOnCollide;
+        public int   Life;
+        public float Velocity;
+        
         public Modifier TempModifier;
         public Modifier PermModifier;
     }
@@ -32,26 +50,5 @@ namespace GamePlay.Data
         public int Shield;
         public int DamageTake;
     }
-    public struct SpellCastInput
-    {
-        public Guid SpellGuid;
-        public bool CastKey;
-    }
-    public struct MovementInput
-    {
-        public float Horizontal;
-        public float Vertical;
-
-        public float Velocity;
-    }
-
-    public struct CharacterInput
-    {
-        public bool Forward;
-        public bool Backward;
-        public bool Right;
-        public bool Left;
-        public bool ActionKey;
-    }
-    
+   
 }

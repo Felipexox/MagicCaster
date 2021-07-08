@@ -14,6 +14,7 @@ namespace GamePlay.Logic
     {
         [SerializeField] private Character[] Characters = new Character[0];
         [SerializeField] private AssetReference _spellReference;
+        [SerializeField] private TargetResolver _targetResolver;
         
         private Character[] InGameCharacters;
 
@@ -31,8 +32,11 @@ namespace GamePlay.Logic
             {
                 _spellDataBase.Abilities[i] = new Ability
                 {
+                    Target = AbilityTarget.MouseDirection,
+                    Duration = 3,
+                    Velocity = 15,
                     AbilityGuid = Guid.NewGuid(),
-                    VisualInfoGuid = new Guid(_spellReference.AssetGUID)
+                    AssetReferenceGuid = new Guid(_spellReference.AssetGUID)
                 };
                 _spellDataBase.Spells[i] = new Spell
                 {
@@ -43,15 +47,18 @@ namespace GamePlay.Logic
                 };      
             }
             InGameCharacters = new Character[Characters.Length];
-            
+            _targetResolver.Initialize(InGameCharacters);
+                
             for (int i = 0; i < Characters.Length; i++)
             {
                 InGameCharacters[i] = Instantiate(Characters[i]);
                 InGameCharacters[i].Initialize(new CharacterData
                 {
                    Velocity = 10
-                }, _spellDataBase);
+                }, _targetResolver, _spellDataBase);
             }
+            
+         
         }
 
         private void Update()

@@ -19,10 +19,10 @@ namespace GamePlay.Component
         private CharacterData _characterData;
 
         private Guid _selectSpell;
-        public void Initialize(CharacterData characterData, SpellDataBase spellDataBase)
+        public void Initialize(CharacterData characterData, TargetResolver targetResolver, SpellDataBase spellDataBase)
         {
             _characterData = characterData;
-            _spellCast.Initialize(spellDataBase);
+            _spellCast.Initialize(spellDataBase, targetResolver);
             _selectSpell = spellDataBase.Spells[0].SpellGuid;
         }
 
