@@ -38,17 +38,36 @@ using System;
     
     public struct Modifier
     {
-        public float Velocity;
-        public int Shield;
-        public int DamageTake;
+        public Guid ModifierGuid;
+        public Attributes ModifierAttributes;
         public float ImpactForce;
     }
 
-    public struct CharacterData
+    public struct Attributes
     {
         public float Velocity;
         public int Shield;
         public int DamageTake;
+
+        public Attributes Add(Attributes attributes)
+        {
+            this.Velocity += attributes.Velocity;
+            this.Shield += attributes.Shield;
+            this.DamageTake += attributes.DamageTake;
+            return this;
+        }
+        public Attributes Sub(Attributes attributes)
+        {
+            this.Velocity -= attributes.Velocity;
+            this.Shield -= attributes.Shield;
+            this.DamageTake -= attributes.DamageTake;
+            return this;
+        }
+    }
+
+    public struct CharacterData
+    {
+        public Attributes CharacterAttributes;
     }
    
 }

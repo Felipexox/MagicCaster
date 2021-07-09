@@ -36,6 +36,22 @@ namespace GamePlay.Logic
                     Duration = 3,
                     Velocity = 15,
                     AbilityGuid = Guid.NewGuid(),
+                    TempModifier = new Modifier
+                    {
+                        ModifierGuid = Guid.NewGuid(),
+                        ModifierAttributes = new Attributes
+                        {
+                            Velocity = -10
+                        }
+                    },
+                    PermModifier = new Modifier
+                    {
+                        ModifierGuid = Guid.NewGuid(),
+                        ModifierAttributes = new Attributes
+                        {
+                            Velocity = 5
+                        }
+                    },
                     AssetReferenceGuid = new Guid(_spellReference.AssetGUID)
                 };
                 _spellDataBase.Spells[i] = new Spell
@@ -54,7 +70,12 @@ namespace GamePlay.Logic
                 InGameCharacters[i] = Instantiate(Characters[i]);
                 InGameCharacters[i].Initialize(new CharacterData
                 {
-                   Velocity = 10
+                   CharacterAttributes = new Attributes
+                   {
+                       Velocity = 10,
+                       Shield = 100,
+                       DamageTake = 0
+                   }
                 }, _targetResolver, _spellDataBase);
             }
             

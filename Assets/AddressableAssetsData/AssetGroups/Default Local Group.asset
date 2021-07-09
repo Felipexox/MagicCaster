@@ -23,6 +23,18 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 8beabc93e96b87943a716126dc9bee3b
+    m_Address: Assets/Prefabs/FireBall.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 8e7c6b8a62295754fa18fd0b45f3edb9
+    m_Address: Assets/Prefabs/Slow.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 92b1a6dafd44b0243bc490f94c07830a, type: 2}
   m_SchemaSet:
